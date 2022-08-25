@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-dinamicos',
@@ -11,6 +12,11 @@ export class DinamicosComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  guardar() {
+    console.log('Formulario posteado');
+    
   }
 
 }

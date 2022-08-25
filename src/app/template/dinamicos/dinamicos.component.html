@@ -1,1 +1,82 @@
-<p>dinamicos works!</p>
+<h2>Template: <small>Dinámicos</small></h2>
+<hr>
+
+<form action=""
+      #formularioDinamicos="ngForm"
+      autocomplete="off">
+    <!-- Nombre -->
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Nombre</label>
+        <div class="col-sm-9">
+            <input type="text"
+                   class="form-control"
+                   ngModel
+                   placeholder="Nombre de la persona"
+                   name="nombre"
+                   required>
+            <span class="form-text text-danger"
+                    *ngIf="formularioDinamicos.controls['nombre']?.errors &&
+                           formularioDinamicos.controls['nombre']?.touched">
+                Este campo es obligatorio
+            </span>
+        </div>
+    </div>
+
+    <!-- Agregar favorito-->
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Agregar</label>
+        <div class="col-sm-9">
+
+           <div class="input-group">
+                <input type="text" 
+                       class="form-control" 
+                       placeholder="Agregar favorito" 
+                       aria-label="Agregar favorito" 
+                       aria-describedby="button-addon2">
+
+                <button class="btn btn-outline-secondary" 
+                        type="button" 
+                        id="button-addon2">
+                    Button
+                </button>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Lista de Juegos Favoritos -->
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Favoritos</label>
+        <div class="col-sm-9">
+            <input class="form-control mb-1">
+            <input class="form-control mb-1">
+            <input class="form-control mb-1">
+            <input class="form-control mb-1">
+            <input class="form-control mb-1">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <button type="button"
+                    class="btn btn-primary float-end"
+                    [disabled]="formularioDinamicos.invalid"
+                    (click)="guardar()">
+                Guardar
+            </button>
+        </div>
+    </div>
+</form>
+
+<!-- <div class="row">
+    <div class="col">
+        <span>Valid</span>
+        <pre>{{formularioDinamicos.valid}}</pre>
+
+        <span>Pristine</span>
+        <pre>{{formularioDinamicos.pristine}}</pre>
+
+        <span>Touched</span>
+        <pre>{{formularioDinamicos.touched}}</pre>
+    </div>
+</div> -->
