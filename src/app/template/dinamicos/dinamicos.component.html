@@ -10,7 +10,7 @@
         <div class="col-sm-9">
             <input type="text"
                    class="form-control"
-                   ngModel
+                   [ngModel]="persona.nombre"
                    placeholder="Nombre de la persona"
                    name="nombre"
                    required>
@@ -37,7 +37,7 @@
                 <button class="btn btn-outline-secondary" 
                         type="button" 
                         id="button-addon2">
-                    Button
+                    Agregar
                 </button>
             </div>
             
@@ -48,11 +48,21 @@
     <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Favoritos</label>
         <div class="col-sm-9">
-            <input class="form-control mb-1">
-            <input class="form-control mb-1">
-            <input class="form-control mb-1">
-            <input class="form-control mb-1">
-            <input class="form-control mb-1">
+            <div *ngFor="let juego of persona.favoritos; let i = index"
+                 class="input-group mb-2">
+                <input 
+                       [(ngModel)]="juego.nombre"
+                       name="favorito_{{ i }}"
+                       class="form-control"
+                       required
+                       aria-label="Agregar favorito">
+
+                <button class="btn btn-outline-danger" 
+                        type="button"
+                        (click)="borrarFavorito(juego.id)">
+                    Eliminar
+                </button>
+            </div>
         </div>
     </div>
 
@@ -68,15 +78,9 @@
     </div>
 </form>
 
-<!-- <div class="row">
+<div class="row">
     <div class="col">
-        <span>Valid</span>
-        <pre>{{formularioDinamicos.valid}}</pre>
-
-        <span>Pristine</span>
-        <pre>{{formularioDinamicos.pristine}}</pre>
-
-        <span>Touched</span>
-        <pre>{{formularioDinamicos.touched}}</pre>
+        <span>Persona</span>
+        <pre>{{persona | json}}</pre>
     </div>
-</div> -->
+</div>
