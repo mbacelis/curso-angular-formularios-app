@@ -18,6 +18,8 @@ interface Favorito{
 })
 export class DinamicosComponent {
 
+  nuevoJuego: string = '';
+
   persona: Persona = {
     nombre: 'Mauricio',
     favoritos: [
@@ -41,6 +43,31 @@ export class DinamicosComponent {
     
     if (index >= 0)
       this.persona.favoritos.splice(index, 1);
+  }
+
+  agregarJuego() {
+    if (this.nuevoJuego?.length > 0) {
+      let ultimo = this.persona.favoritos.pop();
+      let id = 0;
+
+      if (ultimo !== undefined) {
+        this.persona.favoritos.push(ultimo);
+        id = ultimo.id + 1;
+      }
+      else {
+        id = 0;
+      }
+
+      const nuevoFavorito: Favorito = {
+        id: (id),
+        nombre: this.nuevoJuego
+      };
+
+      this.persona.favoritos
+        .push({ ...nuevoFavorito });
+      
+      this.nuevoJuego = '';
+    }
   }
 
 }
