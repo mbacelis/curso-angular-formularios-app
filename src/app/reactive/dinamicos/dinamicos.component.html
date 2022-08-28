@@ -1,16 +1,20 @@
 <h2>Reactivos: <small>Dinámicos</small></h2>
 <hr>
 
-<form autocomplete="off">
+<form autocomplete="off"
+    (ngSubmit)="guardar()"
+    [formGroup]="miFormulario">
     <!-- Nombre -->
     <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Nombre</label>
         <div class="col-sm-9">
             <input type="text"
                    class="form-control"
-                   placeholder="Nombre de la persona">
-            <span class="form-text text-danger">
-                Este campo es obligatorio
+                   placeholder="Nombre de la persona"
+                   formControlName="nombre">
+            <span class="form-text text-danger"
+                  *ngIf="validacionCampo('nombre')">
+                Debe ser mayor a 3 letras
             </span>
         </div>
     </div>
@@ -55,7 +59,7 @@
 
     <div class="row">
         <div class="col-sm-12">
-            <button type="button"
+            <button type="submit"
                     class="btn btn-primary float-end">
                 Guardar
             </button>
