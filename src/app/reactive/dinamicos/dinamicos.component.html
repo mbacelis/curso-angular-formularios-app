@@ -27,13 +27,16 @@
            <div class="input-group">
                 <input type="text" 
                        class="form-control" 
-                       placeholder="Agregar favorito" 
+                       placeholder="Agregar favorito"
                        aria-label="Agregar favorito" 
-                       aria-describedby="button-addon2">
+                       aria-describedby="button-addon2"
+                       [formControl]="nuevoFavorito"
+                       (keyup.enter)="agregarFavorito()">
 
                 <button class="btn btn-outline-secondary" 
                         type="button" 
-                        id="button-addon2">
+                        id="button-addon2"
+                        (click)="agregarFavorito()">
                     Agregar
                 </button>
             </div>
@@ -52,7 +55,8 @@
                        [formControlName]="i">
 
                 <button class="btn btn-outline-danger" 
-                        type="button">
+                        type="button"
+                        (click)="eliminarFavorito(i)">
                     Eliminar
                 </button>
             </div>
@@ -74,3 +78,7 @@
 <br>
 <span>Value</span>
 <pre>{{miFormulario.value | json}}</pre>
+<br>
+<span>Agregar Juego</span>
+<pre>{{nuevoFavorito.valid | json}}</pre>
+<pre>{{nuevoFavorito.value | json}}</pre>
